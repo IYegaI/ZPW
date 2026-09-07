@@ -1,0 +1,5 @@
+git commit - rejestruje migawkę wszystkich śledzonych plików w moim katalogu. Commit też posiada w sobie pamięć działań które odbywały się w jakimś miejscu w kodzie. Commity są tak lekkie jak tylko to możliwe ze względu na to że git nie kopiuje zawartości na ślepo, tylko zmienia te miejsca w których nastąpiły zmiany.
+git checkout <nazwa> - przełącza nas na gałąź o jakiejś nazwie
+git brange - tworzy nową gałąź
+git merge - łączy dwie różne gałęzie w jedną czyli łączy dwie różne pracy w jedną 
+git rebase- przenosi naszą pracę z jednej gałęzi na drugą
