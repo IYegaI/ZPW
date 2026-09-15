@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj imię: ");
+        String name = scanner.nextLine();
+        System.out.println("Podaj nazwisko: ");
+        String surename = scanner.nextLine();
+        System.out.println("Podaj maila: ");
+        String mail = scanner.nextLine();
+        System.out.println("Podaj haslo: ");
+        String password = scanner.nextLine();
+        name.trim();
+        surename.trim();
+        mail.trim();
+        password.trim();
+        if (name.isEmpty()){
+            System.out.println("Imię?!");
+        }
+        if (surename.isEmpty()){
+            System.out.println("nazwisko?!");
+        }
+        if (mail.isEmpty()){
+            System.out.println("mail?!");
+        }
+        if (password.isEmpty()){
+            System.out.println("password?!");
+        }
+        System.out.println(mail.contains("@"));
+        if(password.length() <= 8){
+        }
+    }
+}
