@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $("#przywitaj").on("click", function(){
+                $('#komunikat').text("Cześć");
+            })
+            $('#kwadrat').click(function(){
+                $('#kwadrat').css("background-color","red");
+            })
+            $('#resetuj').click(function(){
+                $('#kwadrat').css("background-color", "lightgray")
+            })
+            let a = 0;
+            $('#kwadrat').click(function(){
+                a++;
+            })
+            $('#wynik').text(a);
+            $()
+            $('#naPoczatek').click(function(){
+                let inputValue = $("input").val();
+                if(inputValue.length !=0){
+                    $('ul').prepend('<li>')
+                    $("li").first().text(inputValue)
+                    $("li").first().css("color","green");
+                }
+                $("input").val();
+            })
+            $('#naKoniec').click(function(){
+                let inputValue = $("input").val();
+                if(inputValue.length !=0){
+                    $('ul').append('<li>')
+                    $("li").last().text(inputValue)
+                    $("li").last().css("color","blue");
+                    }
+                    $("input").val();
+            })
+
+        })
+    </script>
+    <title>Document</title>
+      <style>
+    </style>
+</head>
+<body>
+    <ul id="lista">
+        <li>Chleb</li>
+        <li>Mleko</li>
+    </ul>
+    <input type="text" id="produkt" placeholder="Nazwa produktu">
+    <button id="naKoniec">Dodaj na koniec</button>
+    <button id="naPoczatek">Dodaj na początek</button>
+</body>
+</html>
