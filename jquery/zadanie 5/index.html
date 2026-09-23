@@ -14,7 +14,10 @@
             let wpisanyProdukt = $("#produkt").val();
                 if(wpisanyProdukt != 0){
                 $("ul").append("<li>" + wpisanyProdukt + "</li>")
-                $("li").last().css("color", "green");
+                $("li").last().css({
+                    "color": "green",
+                    "font-weight": "bold"
+                });
             }
             $("#produkt").val("");
             });
@@ -23,12 +26,28 @@
                 let wpisanyProdukt = $("#produkt").val();
                 if(wpisanyProdukt != 0){
                 $("ul").prepend("<li>" + wpisanyProdukt + "</li>").css();
-                $("li").first().css("color", "red");
+                $("li").first().css({
+                    "color": "red",
+                    "font-weight": "bold"
+                });
             }
             $("#produkt").val("");
             });
+            
 
-        })
+            $("#answer").change(function(){
+                if(this.checked){
+                    $("#send").removeAttr("disabled");
+                }else{
+                   $("#send").attr("disabled", "disabled"); 
+                }
+            })
+
+            
+
+    });
+
+        
     </script>
 
 
@@ -45,6 +64,18 @@
     <button id="naKoniec">Dodaj na koniec</button>
 
     <button id="naPoczatek">Dodaj na początek</button>
+    <br>
+    <input type="checkbox" id="answer" name="answer">
+    <label for="answer">zgadzam sie na wysłanie</label>
+    <button id="send" disabled >Wyślij</button>
+
+
+
+
+
+
+
+
 
 </body>
 </html>
