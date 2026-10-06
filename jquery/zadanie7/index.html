@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery</title>
+    <script
+        src="https://code.jquery.com/jquery-4.0.0.min.js"
+        integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao="
+        crossorigin="anonymous">
+    </script>
+
+    <script>
+        $(function(){
+            $("#przelacz").click(function(){
+                $('#pudelko').toggle()
+            })
+            $("akapit").click(function(){
+                $(this).toggleClass("podswietlony")
+            })
+            $("#przywitaj").click(function(){
+                let name = $("#imie").val().trim();
+                if(name.length == 0){
+                    $("#wynik").text("Podaj imię");
+                } else {
+                    $("#wynik").text("Siema " + name);
+                }
+            })
+            $("#akceptuje").click(function(){
+                if(this.checked){
+                    $("#wyslij").removeAttr('disabled')
+                }
+            })
+
+            $("li").each(function(index, element) {
+                $(element).text(index+1 + "." + $(element).text());
+            });
+            $("#zaloguj").click(function(){
+                let login = $("#login").val();
+                let haslo = $("#haslo").val();
+                if(login.length <= 3){
+                    $("#komunikat").text("Login masz za krotki");
+                } else if (haslo.length <= 6) {
+                    $("#komunikat").text("Masz za krotkie haslo")
+                } else {
+                    $("#komunikat").text("Zalogowany").css('background-color', 'green');
+                }
+            })
+        
+        })
+    </script>
+    <style>
+        .podswietlony{
+            background-color: yellow;
+        }
+    </style>
+</head>
+    <body>
+         <p class="akapit">Kliknij mnie</p>
+         <input type="text" id="imie">
+         <button id="przywitaj">Przywitaj</button>
+         <p id="wynik"></p>
+         <label><input type="checkbox" id="akceptuje"> Akceptuje regulamin</label>
+         <button id="wyslij" disabled>Wyślij</button>
+         <ul id="menu">
+            <li>Strona główna</li>
+            <li>O nas</li>
+            <li>Kontakt</li>
+         </ul>
+
+         <input type="text" id="login">
+         <input type="text" id="haslo">
+         <button id="zaloguj">Zaloguj</button>
+         <p id="komunikat"></p>
+
+    </body>
+</html>
