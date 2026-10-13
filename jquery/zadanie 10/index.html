@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery</title>
+    <script
+        src="https://code.jquery.com/jquery-4.0.0.min.js"
+        integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao="
+        crossorigin="anonymous">
+    </script>
+
+    <script>
+        $(function(){
+            $("#hide").hide()
+            $("#show").show()
+            $("#toggle").toggle()
+            $("#slideUp").slideUp()
+            $("#slideDown").slideDown()
+            $("#slideToggle").slideToggle()
+        })
+    </script>
+    <style>
+        .podswietlony{
+            background-color: yellow;
+        }
+        .blad {
+            background-color: red;
+        }
+    </style>
+</head>
+    <body>
+         <p id="hide">hide</p>
+         <p id="show">show</p>
+         <p id="toggle">toggle</p>
+         <p id="slideUp">slideUp</p>
+         <p id="slideDown">slideDown</p>
+         <p id="slideToggle">slideToggle</p>
+    </body>
+</html>
