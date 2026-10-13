@@ -1,0 +1,93 @@
+import os
+
+
+def wczytaj_dane():
+    if not os.path.exists("dane_tekstowe_do_sortowania.txt"):
+        print("Plik nie istnieje. Utworzono pustą listę.")
+        open("dane_tekstowe_do_sortowania.txt", "w", encoding="utf-8").close()
+        return []
+
+    with open("dane_tekstowe_do_sortowania.txt", "r", encoding="utf-8") as plik:
+        dane = plik.readlines()
+
+    dane = [uczen.strip() for uczen in dane]
+
+    return dane
+
+
+def wyswietl_dane(dane):
+    print("\nLista uczniów:")
+
+    if len(dane) == 0:
+        print("Lista jest pusta.")
+    else:
+        for i in range(len(dane)):
+            print(str(i + 1) + ". " + dane[i])
+
+
+def posortuj_dane(dane):
+    posortowane = dane.copy()
+    posortowane.sort()
+
+    print("\nPosortowana lista uczniów:")
+    wyswietl_dane(posortowane)
+
+
+def usun_ucznia(dane):
+    if len(dane) == 0:
+        print("Lista jest pusta.")
+        return
+
+    wyswietl_dane(dane)
+
+    try:
+        numer = int(input("Podaj numer ucznia do usunięcia: "))
+
+        if numer >= 1 and numer <= len(dane):
+            usuniety = dane.pop(numer - 1)
+            print("Usunięto ucznia:", usuniety)
+
+            with open("dane_tekstowe_do_sortowania.txt", "w", encoding="utf-8") as plik:
+                for uczen in dane:
+                    plik.write(uczen + "\n")
+        else:
+            print("Nie ma ucznia o takim numerze.")
+
+    except ValueError:
+        print("Podaj poprawny numer.")
+
+
+def menu():
+    dane = wczytaj_dane()
+
+    while True:
+        print("\n===== MENU =====")
+        print("1. Wyświetl uczniów")
+        print("2. Posortuj uczniów")
+        print("3. Usuń ucznia")
+        print("4. Zakończ program")
+
+        wybor = input("Wybierz opcję: ")
+
+        if wybor == "1":
+            wyswietl_dane(dane)
+
+        elif wybor == "2":
+            posortuj_dane(dane)
+
+        elif wybor == "3":
+            usun_ucznia(dane)
+
+        elif wybor == "4":
+            print("Koniec programu.")
+            break
+
+        else:
+            print("Nieprawidłowy wybór. Wybierz opcję od 1 do 4.")
+
+
+def main():
+    menu()
+
+
+main()
