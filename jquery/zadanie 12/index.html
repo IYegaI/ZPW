@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery</title>
+    <script
+        src="https://code.jquery.com/jquery-4.0.0.min.js"
+        integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao="
+        crossorigin="anonymous">
+    </script>
+
+    <script>
+        $(function(){
+            $("#newsletter").change(function(){
+                if($(this).is(":checked")){
+                    $("#stan").text("Zapisano")
+                } else {
+                    $("#stan").text("Wypisano")
+                }
+            })
+            $("#regulamin").change(function(){
+                $("#zarejestruj").prop("disabled", true)
+                if($(this).is(":checked")){
+                    $("#zarejestruj").prop("disabled", false)
+                } else {
+                    $("#zarejestruj").prop("disabled", true)
+                }
+            })
+            $("#tekst").on("input", function(){
+                $("#podglad").text($(this).val())
+            })
+            $("#pole").on("input", function(){
+                let charactersLeft = 100 - $(this).val().length
+                $("#licznik").text(charactersLeft);
+                if(charactersLeft < 10){
+                    $("#licznik").css("color", "red")
+                } else {
+                    $("#licznik").css("color", "black")
+                }
+            })
+        })
+    </script>
+    <style>
+        
+    </style>
+</head>
+    <body>
+        <input type="checkbox" id="newsletter"> Chcę newsletter
+        <p id="stan"></p>
+        <hr>
+        <form>
+            <input type="checkbox" id="regulamin">Akceptuję regulamin
+            <button id="zarejestruj">Zarejestruj</button>
+        </form>
+        <hr>
+        <input type="text" id="tekst">
+        <p>Podgląd <span id="podglad"></span></p>
+        <hr>
+        <textarea id="pole"></textarea>
+        <p id="licznik"></p>
+    </body>
+</html>
