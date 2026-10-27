@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+        src="https://code.jquery.com/jquery-4.0.0.min.js"
+        integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao="
+        crossorigin="anonymous">
+    </script>
+    <script>
+        $(function(){
+            $("#szukaj").keyup(function(e){
+                let wynik = $("#szukaj").val().trim()
+                if(e.key == "Enter"){
+                    if(wynik === ""){
+                        $("#wynik").text("Wpisz frazę!").css("color", "red")
+                    } else {
+                        $("#wynik").text("Szukam: " + wynik)
+                    }
+                } else if(e.key == "Escape"){
+                    $("#szukaj").val("")
+                    $("#wynik").text("")
+                }
+            })
+
+            $("#haslo").on("input", function(e){
+                e.preventDefault()
+                if($(this).val().length < 6){
+                    $("#sila").text("Słabe").addClass("slabe")
+                } else if($(this).val().length > 6 && $(this).val().length < 9) {
+                    $("#sila").text("Średnie").addClass("srednie")
+                } else if($(this).val().length > 10) {
+                    $("#sila").text("Silne").addClass("silne")
+                }
+            })
+            $("#logowanie").submit(function(e){
+                e.preventDefault()
+                let password = $("#pass").val().trim()
+                let login = $("#login").val().trim()
+                if(login === ""){
+                    $("#info").text("Podaj login")
+                }
+
+                if(password.length < 6){
+                    $("#info").text("Hasło za krótkie")
+                }
+            })
+
+            $("#rozmiar").change(function(){
+            $("#tekst").css('font-size', $(this).val())
+            $("#rezultat").text("Aktualny rozmiar: " + $(this).val()+"px")
+        })
+
+        })
+    </script>+
+    <style>
+        .slabe{
+            background-color: red;
+        }
+        .srednie{
+            background-color: orange;
+        }
+        .silne{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="szukaj" placeholder="Szukaj...">
+    <p id="wynik"></p>
+    <hr>
+    <input type="password" id="haslo">
+    <p id="sila"></p>
+    <hr>
+    <form id="logowanie">
+        <input type="text" id="login" placeholder="Login">
+        <input type="password" id="pass" placeholder="Hasło">
+        <button type="submit">Zaloguj</button>
+    </form>
+    <p id="info"></p>
+    <hr>
+    <select id="rozmiar">
+        <option value="14">Mały</option>
+        <option value="20">Średni</option>
+        <option value="28">Duży</option>
+    </select>
+    <p id="tekst">Przykładowy tekst akapitu.</p>
+    <p id="rezultat"></p>
+</body>
+</html>
